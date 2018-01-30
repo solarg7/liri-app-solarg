@@ -1,0 +1,25 @@
+{
+  "name": "liri-app-solarg",
+  "version": "1.0.0",
+  "description": "excercise node",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/solarg7/liri-app-solarg.git"
+  },
+  "author": "solarg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/solarg7/liri-app-solarg/issues"
+  },
+  "homepage": "https://github.com/solarg7/liri-app-solarg#readme",
+  "dependencies": {
+    "dotenv": "^5.0.0",
+    "fs": "0.0.1-security",
+    "request": "^2.83.0",
+    "twitter": "^1.7.1"
+  }
+}
