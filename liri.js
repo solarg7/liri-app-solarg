@@ -1,8 +1,9 @@
 require("dotenv").config();
+
 var request = require('request');
 var keys = require('./keys.js');
 var Twitter = require('twitter');
-//console.log("paolita");
+
 var fs = require("fs");
 var Spotify = require('node-spotify-api');
 
@@ -59,13 +60,13 @@ function getTweets(){
 }
 
 function lookupValue() {
-    //concatenate the other process args together into one string
+    
         var lookup = "";
         for (i = 3; i < wordInput.length; i++) {
             lookup += wordInput[i] + " "; 
         }
         //console.log(lookup);
-        return lookup.trim(); // remove trailing space   
+        return lookup.trim(); 
 }
 
 
@@ -90,9 +91,6 @@ function getSong(){
             console.log("error :" + err);
         }
 
-        //var song = data.tracks.items[0];
-        //console.log(song.artists[0].name);
-        //console.log(song.items[0].album.album_type);
         console.log("======Track:========");
         console.log(data.tracks.items[0].name);
         console.log("======Artist:========");
@@ -109,7 +107,7 @@ function getSong(){
 
 
 function getMovie() {
-    // if no movie title was input, use Mr. Nobody
+   
 
    
     if (wordInput.length != 3) {
@@ -119,13 +117,13 @@ function getMovie() {
        //console.log(wordInput);  
         var lookupMovieValue = "Mr. Nobody";
     };
-    // pull back movie information
+    
     var lookupMovie = "http://www.omdbapi.com/?t=" + lookupMovieValue + "&y=&plot=short&apikey=trilogy";
-    // &r=json
+    
     request(lookupMovie, function(error, response, body) {
-    // If the request was successful...
+    
         if (!error && response.statusCode === 200) {
-            // the parse string into object
+            
             var movieBody = JSON.parse(body);
             console.log("=============");
             console.log("Title: " + movieBody.Title
@@ -136,26 +134,19 @@ function getMovie() {
                 + "\nLanguage: " + movieBody.Language
                 + "\nPlot: " + movieBody.Plot
                 + "\nActors: " + movieBody.Actors);
+            console.log("=============");    
         }
     });
 }
 
 function getRandomAction() {
     fs.readFile("./random.txt", "utf8", function(error, data) {
-        //console.log(data);
-        //console.log(data[1]);
-        var randomInput = data.split(","); // replace process.arg wordInput with values in file
+        var randomInput = data.split(",");
         wordInput[2] = randomInput[0];
         wordInput[3] = randomInput[1];
         var aux =  wordInput[2] ;
         functionLiri(aux);
-        
 
-        //wordInput.unshift("0","1");  // prepend two dummy values to match expected wordInput
-        //if (wordInput[2] != "do-what-it-says") {
-            //navigateToLIRI(wordInput[2]);
-        //} else {
-            //console.log("Error. File value cannot call 'do-what-it-says'.")
     });
     
 }
