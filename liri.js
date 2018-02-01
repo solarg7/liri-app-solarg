@@ -58,7 +58,8 @@ function getTweets(){
 }
 
 function getSong(){
-    console.log("pao");
+    //console.log("pao");
+    var songSearch = 
     var spotify = new Spotify(keys.spotify);
     spotify.search({ type: "track", query: "Faithfully"}, function(err, data){
         if (err) {
@@ -68,10 +69,16 @@ function getSong(){
         //var song = data.tracks.items[0];
         //console.log(song.artists[0].name);
         //console.log(song.items[0].album.album_type);
+        console.log("======Track:========");
         console.log(data.tracks.items[0].name);
+        console.log("======Artist:========");
         console.log(data.tracks.items[0].artists[0].name);
+        console.log("======Album:========");
         console.log(data.tracks.items[0].album.name);
-        console.log("amparito");
+        console.log("======Spotify Link:========");
+        console.log(data.tracks.items[0].preview_url);
+        console.log("======================");
+        //console.log("amparito");
     });
 }
 
